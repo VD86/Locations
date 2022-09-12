@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container m-4">
+    <h1 class="text-white mt-3">Регистрация</h1>
+  <div class="text-white col-2">
+    <form action="" method="post">
+		   {% csrf_token %}
+           {{form}}
+           <input type="submit" class="btn btn-secondary mt-3" value="Добавить">
+    </form>
+  </div>
+</div>
+
+{% endblock %}

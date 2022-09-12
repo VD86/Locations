@@ -1,0 +1,48 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <body style="background-color:#000000"></body>
+    <title>Неизведанная Беларусь</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap" rel="stylesheet">
+
+</head>
+
+<body style="font-family: 'Montserrat', sans-serif; !important">
+
+<nav class="navbar" style="background-color:#D68910; position:sticky; top:0;z-index:100;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href = "/"><i class="fa-solid fa-route"></i>Главная</a>
+
+    <form class="d-flex" action="{% url 'search_results' %}" role="search" method="get">
+      <input class="form-control me-2" type="search" placeholder="Поиск..." aria-label="Search" name="q">
+      <button class="btn btn-outline-dark" type="submit">Искать</button>
+    </form>
+
+      <a href="{% url 'create' %}" class="btn btn-outline-dark"> Добавить маршрут </a>
+      <a href="{% url 'login' %}" class="btn btn-outline-dark"> Авторизация </a>
+      <a href="{% url 'register' %}" class="btn btn-outline-dark"> Регистрация </a>
+      <a href="{% url 'logout' %}" class="btn btn-outline-black"> Выйти </a>
+{{request.user}}
+  </div>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
+

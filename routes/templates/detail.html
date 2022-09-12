@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="background-color:#454545">
+<div class="container m-15" >
+    <div class="card" style="background-color:#000000">
+      <img src="{{post.image.url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="fw-bolder text-capitalize text-white fs-4">{{post.title}}</h5>
+        <p class="fw-normal text-start text-white fs-5">{{post.desc}}</p>
+        <p class="fw-bold text-white fs-6"> Опубликованно: {{post.publish}} - {{post.author}}</p>
+  </div>
+  <div class="card-body text-end" >
+    <a href="{% url 'edit' post.pk %}" class="btn btn-outline-warning">Исправить</a>
+    <a href="{% url 'delete' post.pk %}" class="btn btn-outline-danger">Удалить</a>
+
+    <p class="fw-normal text-start text-white fs-5">Комментарии ({{post.comments_posts.all.count}})</p>
+    <hr>
+    <p class="fw-normal text-start text-white fs-5">Добавить комментарий</p>
+ <a class="fw-normal text-start text-white fs-7">
+         {% if messages %}
+      <div class="alert alert-success">
+          {% for n in messages %}
+          {{n}}
+          {% endfor %}
+      </div>
+      {% endif %}
+
+    <ul>
+
+    {% for item in post.comments_posts.all %}
+    <li>
+     Дата создания: {{item.created}}<br>
+     Автор коммента: {{item.author}}<br>
+     Статус коммента: {{item.status}}<br><br>
+
+<div class="fw-normal text-start text-white fs-5">
+     {{item.text}}<br><br>
+</div>
+
+    </li>
+     {% endfor %}
+    </ul>
+</a>
+<div class="col-2">
+    <form action="" id="add_form" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+    </form>
+    <button form="add_form" type="submit" class="btn btn-dark">Добавить</button>
+</div>
+
+
+ </div>
+    </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}
