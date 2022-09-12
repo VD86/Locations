@@ -1,8 +1,5 @@
-# Locations
-Independent first project
-
 # About:
-  ### My first blog
+  ### My independent first blog
 
 # How to RUN:
   ### py -m venv ve
